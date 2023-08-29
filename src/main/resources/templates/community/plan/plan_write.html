@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>plan_write.html</title>
@@ -448,6 +448,7 @@
                                                     <div class="ctn1_des_list_span1"> <!-- 제주공항박스 -->
                                                         <p class="ctn1_des_list_span1p">제주국제공항</p>
                                                         <span class="ctn1_des_list_span1sp">공항</span>
+                                                        <!--<h1 th:text="${}"></h1>-->
                                                     </div>
 
                                                 </div>
@@ -543,7 +544,7 @@
 
 
                         <div class="sc-e6a1c59a-15 YIEaf">
-                            <button color="#fff" class="sc-1dca83dc-0 hwLFpI">내 일정으로 이동</button>
+                            <button color="#fff" class="sc-1dca83dc-0 hwLFpI">일정 작성 완료하기</button>
                         </div>
                     </div> <!-- 여기까지 content 한 세트-->
 
@@ -557,6 +558,14 @@
 
 <div th:include="/footer.html :: footer"></div>
 
+
+
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
+<script src="/jq/jquery-3.7.0.min.js"></script>
+<script src="/js/header.js"></script>
+
 <script>
     //내 일정으로 이동 버튼 클릭 시 plan(일정 메인)으로 이동    (원래: 마이페이지-내 일정으로 이동)
     const MoveMySchedule = document.querySelector('.sc-1dca83dc-0.hwLFpI');
@@ -564,13 +573,15 @@
     MoveMySchedule.addEventListener('click', () => {
         window.location.href = '../plan';
     });
+
+    //여행지 추가 버튼 클릭 시 plan_add로 이동
+    const MovePlanAdd = document.querySelector('.sc-1ee6e84e-3.bXRoJG');
+
+    MovePlanAdd.addEventListener('click', () => {
+        window.location.href = '../plan/add';
+    });
+
 </script>
-
-
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
-<script src="/jq/jquery-3.7.0.min.js"></script>
-<script src="/js/header.js"></script>
 
 <script type="text/javascript"
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c012367ce50cd5f2e93814481c3cf769&libraries=services,clusterer,drawing"></script>
@@ -889,6 +900,6 @@
 
 </script>
 
-<script src="/jq/jquery-3.7.0.min.js"></script>
+
 </body>
 </html>

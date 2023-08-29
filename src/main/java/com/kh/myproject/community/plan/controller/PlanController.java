@@ -1,10 +1,13 @@
 package com.kh.myproject.community.plan.controller;
 
+import com.kh.myproject.community.plan.Item;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+//@RestController
 @SessionAttributes("user")
 public class PlanController {
 
@@ -31,6 +34,36 @@ public class PlanController {
 
         return "community/plan/plan_write";
     }
+
+    //일정 글쓰기 - 장소추가
+    @GetMapping("/community/plan/add") // http://localhost:8080/community/plan/add
+    public String communityplanadd() {
+
+
+        return "community/plan/plan_add";
+    }
+
+
+
+/*
+    @GetMapping("/community/plan/write/{item}") // http://localhost:8080/community/plan/write
+    public String communityplanwrite2(@PathVariable Item item) {
+
+        System.out.println(item);
+        return "community/plan/plan_write";
+    }
+
+ */
+
+//    @PostMapping("/community/plan/move")
+//    public ModelAndView move(@RequestParam(value = "age")int age, ModelAndView mav){
+//        mav.addObject("age",age);
+//        System.out.println(age);
+//        mav.setViewName("community/plan/plan_write");
+//        return mav;
+//    }
+
+
 
 
 
