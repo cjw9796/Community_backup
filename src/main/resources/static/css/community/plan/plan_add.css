@@ -56,6 +56,7 @@
 
 
 /*카카오맵*/
+<<<<<<< HEAD
 /*카카오맵 기본 css */
 .map_wrap, .map_wrap * {
     margin: 0;
@@ -242,6 +243,9 @@
 
 
 /*카카오맵 추가 css */
+=======
+
+>>>>>>> dc542b81feaaf554a4a07a27e39f7721463a3530
 #keyword{
     position: relative;
     box-sizing: border-box;
