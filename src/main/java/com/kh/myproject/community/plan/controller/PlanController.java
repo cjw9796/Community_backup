@@ -1,10 +1,6 @@
 package com.kh.myproject.community.plan.controller;
 
-<<<<<<< HEAD
 
-=======
-import com.kh.myproject.community.plan.Item;
->>>>>>> dc542b81feaaf554a4a07a27e39f7721463a3530
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
