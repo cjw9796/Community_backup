@@ -1,6 +1,21 @@
 
 
 <header>
+
+    <!-- sweet alert script 전체 페이지 적용(헤더있는 페이지만)-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<!--    &lt;!&ndash; sweet alert css 전체 페이지 적용&ndash;&gt;-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+
+    <!-- font 적용 CDN-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
+
+
     <div class="nav_bar">
         <div class="nav_bar_main">
             <div class="nav_content1">
@@ -17,7 +32,7 @@
                     <span><i class="fa-solid fa-magnifying-glass"></i></span>
 
                     <input type="text"
-                           placeholder="동행을 찾아보세요">
+                           placeholder="동행을 찾아보세요" id = "search_bar">
 
 
                 </div>
@@ -25,9 +40,9 @@
                 <div th:if = "${user!=null}">
                     <div class="nav_logintf my_icons">
                         <div class="mypage"><img th:src="'/file/profile_image/' + ${user.userImg}" alt="" class = "profile_img"
-                                                 onclick="location.href='/member/mypage'"></div>
+                                                 onclick="window.location.href='/member/mypage'"></div>
                         <div class="logout"><i class="fa-xl fa-solid fa-arrow-right-from-bracket" style="color: #bebebe;"
-                                               onclick="location.href = '/member/logout'"></i></div>
+                                               onclick="window.location.href= '/member/logout'"></i></div>
                     </div>
 
 

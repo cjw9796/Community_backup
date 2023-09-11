@@ -52,6 +52,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .mct_1 {
@@ -64,12 +65,14 @@
     color: #00b8ff;
     font-weight: 600;
     cursor: pointer;
+
 }
 
 .main_content1_box {
-    margin: 30px 0px;
-    display: flex;
-    justify-content: space-between;
+    width: 100%;
+    display:flex;
+    flex-wrap: wrap;
+    gap: 24px;
 }
 
 .test2 {
@@ -150,27 +153,47 @@ swiper-slide img {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
+    justify-content: space-around;
     width: 100%;
-    height: max-content;
+    height: 45px;
     padding: 12px 9px;
+    box-sizing: border-box;
 
 }
 
 .user_profile, .trip_profile {
-    width: 44%;
+    width: 40%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+
+
 .user_nick {
-    font-size: 12px;
+
+    font-size: 13px;
 }
 
-.user_agender {
+.user_gender4{
+    user-select: none;
+    display: -webkit-box;
     font-size: 12px;
-    color: #588fee;
-    font-weight: 600;
+    font-weight: 400;
+    line-height: 18px;
+    color: rgb(0, 143, 246);
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+.two_jum{
+    /*display: flex;*/
+    /*width: 2px;*/
+    /*height: 2px;*/
+    /*margin: 0px 6px;*/
+    /*background: rgb(0, 143, 246);*/
+    /*border-radius: 50%;*/
 }
 
 .box_shortline {
@@ -192,7 +215,7 @@ swiper-slide img {
 
 .trip_date {
     font-size: 12px;
-    color: forestgreen;
+    color: #588fee;
     font-weight: 600;
 }
 
@@ -215,17 +238,41 @@ swiper-slide img {
 }
 
 .test1_content3 {
-    padding: 8px 8px;
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    height: max-content;
+    padding: 8px;
+
 }
 
 .text_title {
+    user-select: none;
+    overflow: hidden;
+    display: -webkit-box;
     font-size: 16px;
     font-weight: 600;
+    line-height: 24px;
+    color: rgb(0, 0, 0);
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }
 
 .text_sub {
-    font-size: 14px;
-    padding: 8px 0px;
+    user-select: none;
+    overflow: hidden;
+    display: -webkit-box;
+    margin-top: 4px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 22px;
+    color: rgb(0, 0, 0);
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 .img_area {
@@ -275,12 +322,6 @@ swiper-slide img {
     font-size: 11px;
 }
 
-.user_agender2 {
-    font-size: 11px;
-    color: #588fee;
-    font-weight: 600;
-    width: 60px;
-}
 
 .map {
     z-index: 1;
@@ -548,11 +589,127 @@ button{
     border: 1px solid rgb(233, 233, 233);
     z-index: 1;
 }
+.fa-sliders::before{
+    color: #00b8ff;
+}
+.dxggeT{
+    margin-left: 10px;
+}
 
 
 
+.test1{
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 282px;
+    height: 286px;
+    background: rgb(255, 255, 255);
+    border-radius: 14px;
+    box-shadow: rgba(25, 25, 25, 0.2) 0px 6px 10px;
+}
+.user_info{
+    width: 70%;
+}
 
 
+.user_info_bottom{
+    display: flex;
+    justify-content: space-between;
+}
 
 
+.ml_4{
+    user-select: none;
+    overflow: hidden;
+    display: -webkit-box;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    /*color: rgb(0, 143, 246);*/
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
 
+.trip_info{
+    width: 100%;
+}
+
+.trip_info_bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size : 12px;
+}
+
+
+/* 어디로 여행 가시나요 dropdown*/
+.menu{
+    width:300px;
+    height:40px;
+    text-align:center;
+    line-height: 40px;
+}
+#allRegion{
+    width:300px;
+    height:40px;
+    text-align:center;
+    line-height: 40px;
+    position:relative;
+}
+
+#allRegion>.sub{
+    display:none;
+    height:auto;
+    list-style:none;
+    overflow:hidden;
+    background-color: white;
+    z-index: 9999;
+    position: absolute;
+    width: 160px;
+
+}
+.menu>.sub li{
+    border-top:1px black solid;
+    background-color: white;
+}
+
+.menu>.sub li>a{
+    text-decoration:none;
+    color:black;
+    border: 3px solid gray;
+    background-color: white;
+}
+
+.menu>.sub.up{
+    height:0px;
+    animation-name:slide_up;
+    animation-duration:1s;
+}
+
+.menu>.sub.down{
+    height:120px;
+    animation-name:slide_down;
+    animation-duration:1s;
+}
+
+@keyframes slide_up{
+    0%{
+        height:120px;
+    }
+    100%{
+        height:0px;
+    }
+}
+
+@keyframes slide_down{
+    0%{
+        height:0px;
+    }
+    100%{
+        height:120px;
+    }
+}

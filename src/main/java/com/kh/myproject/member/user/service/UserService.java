@@ -1,8 +1,18 @@
 package com.kh.myproject.member.user.service;
 
 
+import com.kh.myproject.community.accompany.entity.Accompany;
+import com.kh.myproject.community.plan.model.dto.PlanBoardDTO;
+import com.kh.myproject.community.plan.model.dto.PlanBoardDetailDTO;
+import com.kh.myproject.community.plan.model.entity.PlanBoard;
+import com.kh.myproject.community.plan.model.entity.PlanBoardDetail;
+import com.kh.myproject.member.manager.repository.ManagerRepository;
 import com.kh.myproject.member.user.model.entity.User;
+import com.kh.myproject.member.user.repository.BoardDetailRepository;
+import com.kh.myproject.member.user.repository.QnaRepository;
 import com.kh.myproject.member.user.repository.UserRepository;
+import com.kh.myproject.store.flight.model.entity.FlightTicketInfo;
+import com.kh.myproject.store.rentcar.model.entity.RentReservationInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -14,6 +24,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLDecoder;
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j // 데이터베이스 로그를 확인
@@ -23,6 +34,15 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private QnaRepository qnaRepository;
+
+    @Autowired
+    private ManagerRepository managerRepository;
+
+    @Autowired
+    private BoardDetailRepository boardDetailRepository;
 
     // Article 전체 목록 조회 실행
     public List<User> index() {
@@ -34,12 +54,12 @@ public class UserService {
 
     }
 
-    public int joinUser(User user) {
+    public User joinUser(User user) {
 
 
         // 유효성 검사는 자바스크립트에서 실시한다.
 
-        int result = 0; // 반환할 리턴값
+        User result = null;
         System.out.println("service에서 받은user :" + user);
 
 
@@ -48,20 +68,24 @@ public class UserService {
         // 자바 스크립트에서 유효성 검사를 했지만 한번더 결과값 출력을 하기위해 유효성 검사를 실행한다.
 
         if (result_user == null) {
-            userRepository.save(user);
-            result = 1;
+           result  =  userRepository.save(user);
+
         }
 
         return result;
     }
 
 
-    public User getUser(String user_id, String user_password) {
+    public Object getUser(String user_id, String user_password) {
 
-        int result = 0;
-        User user_result = userRepository.findByUserIdAndUserPassword(user_id, user_password);
 
-        return user_result;
+        Object manager_check = managerRepository.findByManagerIdAndManagerPassword(user_id, user_password);
+
+
+        if(manager_check == null) {
+            manager_check  = userRepository.findByUserIdAndUserPassword(user_id, user_password);
+        }
+        return manager_check;
     }
 
     public User getUserById(String user_id) {
@@ -71,6 +95,55 @@ public class UserService {
         return result;
     }
 
+    public List<FlightTicketInfo> getFticketByNum(Long user_number) {
+
+        List<FlightTicketInfo> result = userRepository.getFticketByNum(user_number);
+
+        return result;
+    }
+
+    public List<RentReservationInfo> getRticketByNum(Long user_number) {
+
+        List<RentReservationInfo> result = userRepository.getRticketByNum(user_number);
+
+        return result;
+    }
+    public List<Accompany> getAccompanyByNum(Long user_number) {
+
+        List<Accompany> result = userRepository.getAccompanyByNum(user_number);
+
+        return result;
+    }
+
+    public List<PlanBoardDTO> getPlanByNum(Long user_number) {
+
+
+
+        List<PlanBoardDTO> result = new ArrayList<>();
+
+        List<PlanBoard> list = userRepository.getPlanByNum(user_number);
+        System.out.println("UserService의 getPlanByNum 실행"+ user_number);
+        for(int i = 0; i < list.size(); i++){
+            PlanBoardDTO boardDTO = list.get(i).toDto();
+            result.add(boardDTO);
+        }
+        return result;
+    }
+
+    public List<PlanBoardDetailDTO> getPlanDetail() {
+
+
+        List<PlanBoardDetailDTO> result = new ArrayList<>();
+
+        List<PlanBoardDetail> list = boardDetailRepository.findAll();
+
+        for(int i = 0; i < list.size(); i++){
+            PlanBoardDetailDTO boardDetailDTO = list.get(i).toDto();
+            result.add(boardDetailDTO);
+        }
+
+        return result;
+    }
     public User updateUser(User user){
 
 
@@ -132,10 +205,36 @@ public class UserService {
             e.printStackTrace();
         }
 
+    }
 
 
 
+    public User findUserId(String user_name, String user_phone1){
 
+        User user = userRepository.findByUserNameAndUserPhone(user_name,user_phone1);
+
+        return user;
+    }
+
+    public User findUserPw(String user_id, String user_phone2){
+
+        User user = userRepository.findByUserIdAndUserPhone(user_id,user_phone2);
+
+        return user;
+    }
+
+    public int updatePw(String user_number, String new_pw1){
+
+
+        int result = userRepository.updatePw(Long.parseLong(user_number), new_pw1);
+
+        return result;
+
+    }
+
+    public User getUserByNumber(Long userNumber){
+
+        return userRepository.findById(userNumber).orElse(null);
     }
 
 }

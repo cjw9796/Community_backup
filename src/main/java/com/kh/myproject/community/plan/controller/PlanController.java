@@ -61,7 +61,7 @@ public class PlanController {
 
     //일정 글 정보
     @GetMapping("/community/plan/detail") // http://localhost:8080/community/plan/detail
-    public String communityplandetail(@RequestParam("pbNum") Long pbNum, Model model) {
+    public String communityplandetail(@RequestParam("pbNum") Long pbNum, @ModelAttribute("user") User user, Model model) {
 
         PlanBoardDTO planBoardDTO = planBoardService.getOnePlanBoard(pbNum);
 //        planBoardDTO.setUser(user); //일정 담기 시 에도 추가

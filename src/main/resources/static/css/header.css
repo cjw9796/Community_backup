@@ -1,7 +1,16 @@
 body {
     margin: 0px;
 
+
 }
+
+*{
+    font-family: 'Hahmlet', serif;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+/* font 적용. */
+
+
 body{-ms-overflow-style:none; }
 body::-webkit-scrollbar { display:none; }
 /* 스크롤바 제거 css */
@@ -32,7 +41,7 @@ header {
 }
 
 .logo_img {
-    width: 100px;
+    width: 120px;
     height: 100%;
 }
 
@@ -89,7 +98,7 @@ header {
 
 .nav_search_tag input:focus {
     border: 2px solid;
-    border-color: rgb(0, 182, 206);
+    border-color: #00B8FF;
     outline: none;
 }
 
@@ -113,7 +122,7 @@ header {
     box-sizing: border-box;
     width: 134px;
     height: 44px;
-    background: rgb(0, 182, 206);
+    background: #00B8FF;
     color: rgb(255, 255, 255);
     border-radius: 10px;
     transition: background-color 0.3s ease-out 0s;
@@ -371,4 +380,9 @@ i{
 .no-js{
 
     display : none;
+}
+
+
+#swal2-title{
+    font-size : 18px;
 }

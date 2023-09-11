@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <title>plan.html</title>
     <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/community/plan/plan.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
-    <script src="https://kit.fontawesome.com/9647b4736a.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/fb453b869a.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="next">
@@ -160,7 +161,7 @@
                                   d="M5.97442 14.0298C4.91947 14.0298 4.06426 14.8765 4.06426 15.9209C4.06426 16.9653 4.91947 17.812 5.97442 17.812C7.02937 17.812 7.88458 16.9653 7.88458 15.9209C7.88458 14.8765 7.02937 14.0298 5.97442 14.0298ZM2.86426 15.9209C2.86426 14.2204 4.25673 12.8418 5.97442 12.8418C7.69212 12.8418 9.08458 14.2204 9.08458 15.9209C9.08458 17.6214 7.69212 19 5.97442 19C4.25673 19 2.86426 17.6214 2.86426 15.9209Z"
                                   fill="#6A6A6A"></path>
                         </svg>
-                        <p class="sc-758baf56-4 hCYEIH">모든 국가</p></div>
+                        <p class="sc-758baf56-4 hCYEIH">모든 지역</p></div>
                 </div>
             </div>
         </section>
@@ -182,7 +183,7 @@
                         <div class="test2_content1">
                             <div class="user_profile">
                                 <div class="user_img">
-                                    <img src="/img/member/신짱구.png">
+                                    <img th:src="'/file/profile_image/' + ${plan.user.userImg}">
                                 </div>
                                 <div class="user_info">
                                     <div class="user_nick2" th:text="${plan.user.userName}"></div>
@@ -197,7 +198,8 @@
                                 <div class="trip_info">
                                     <div class="trip_len"><i class="fa-solid fa-calendar" style="color: #9a9a9a;"></i>여행기간
                                     </div>
-                                    <div class="trip_date" th:text="${plan.pbStartDate} + '-' + ${plan.pbEndDate}">
+
+                                    <div class="trip_date" th:text="${plan.pbStartDate} + ' - ' + ${plan.pbEndDate}">
                                         <!--9일 · 10/16-10/24--> </div>
                                 </div>
                             </div>
@@ -411,9 +413,9 @@
 
     </div>
 
+<footer th:include="/footer.html :: footer"></footer>
 </div>
 
-<div th:include="/footer.html :: footer"></div>
 
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
