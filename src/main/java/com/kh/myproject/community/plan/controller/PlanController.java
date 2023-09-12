@@ -46,22 +46,16 @@ public class PlanController {
         model.addAttribute("planList", planList);
         System.out.println(planList);
 
-
-
         List<PlanBoardDetailDTO> planDetailList = planBoardService.getAllPlanBoardDetailList();
-
         model.addAttribute("planDetailList", planDetailList);
         System.out.println(planDetailList);
-
-        // 2.
-
 
         return "community/plan/plan";
     }
 
     //일정 글 정보
     @GetMapping("/community/plan/detail") // http://localhost:8080/community/plan/detail
-    public String communityplandetail(@RequestParam("pbNum") Long pbNum, @ModelAttribute("user") User user, Model model) {
+    public String communityplandetail(@RequestParam("pbNum") Long pbNum, Model model) {
 
         PlanBoardDTO planBoardDTO = planBoardService.getOnePlanBoard(pbNum);
 //        planBoardDTO.setUser(user); //일정 담기 시 에도 추가
@@ -128,7 +122,6 @@ public class PlanController {
         model.addAttribute("day", day);
         model.addAttribute("type", type);
 
-
         return "community/plan/plan_add";
     }
 
@@ -138,12 +131,7 @@ public class PlanController {
     @ResponseBody
     public void move(@RequestBody PlanBoardDetailDTO[] dtoList) {
 
-
-        for (PlanBoardDetailDTO PlanBoardDetailDTO : dtoList) {
-            planDetailTemporalList.add(PlanBoardDetailDTO);
-        }
-
-
+        Collections.addAll(planDetailTemporalList, dtoList);
     }
 
     //일정 삭제하는 컨트롤러(Plan_write에서 삭제버튼 클릭 시)
@@ -165,9 +153,6 @@ public class PlanController {
     @ResponseBody
     public String completePlan(@RequestBody PlanBoardDTO boardDTO,
                                @ModelAttribute("user") User user) {
-
-
-
         // 1. Dto user 정보 저장
         boardDTO.setUser(user);
 
