@@ -418,22 +418,37 @@ function joinChatRoom(element) {
 // 1:1채팅 버튼 클릭시.
 // 로그인이 돼있는 상태여야한다.
 // detail은 로그인하지 않은 상태에서도 볼 수 있으므로 session을 검사하낟.
-$('#chat-btn').click(function () {
+// ===========댓글에서 채팅하기 클릭시 로그인하지 않았을때 유효성 검사 추가===========
+$('.chat-btn').click(function () {
 
     console.log('1:1 채팅 클릭!');
 
 
-    console.log($('#chat-btn').val());
-    var writerNumber = $('#chat-btn').val();
+    console.log($(this).val());
+    var writerNumber = $(this).val();
 
     console.log(userNumber)
     console.log(writerNumber)
 
     if (userNumber == writerNumber) { // 내가 나한테 채팅을 걸려고 한다면.
 
-        alert("본인에게는 채팅을 거실 수 없습니다.");
+
+        Swal.fire({
+            title: '본인에게는 채팅을 거실 수 없습니다.',
+            icon: 'error',
+            confirmButtonColor: '#00b8ff',
+            confirmButtonText: '확인'
+        });
+
     } else if (userNumber == -1) {
-        alert("로그인 후 채팅하실 수 있습니다.")
+        Swal.fire({
+            title: '로그인 후 채팅하실 수 있습니다.',
+            icon: 'error',
+            confirmButtonColor: '#00b8ff',
+            confirmButtonText: '확인'
+        }).then(function(){
+            location.href='/member/login';
+        });
 
     } else if (userNumber != -1) { // 현재 가지고 있는 userNumber값이 없을때만 채팅방을 생성한다.
         $.ajax({
