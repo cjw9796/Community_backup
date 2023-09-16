@@ -15,7 +15,7 @@ public interface CommentRepository extends JpaRepository<Comment,Long> {
     List<Comment> findByUser(User user);
 
     @Query("select co from Comment co join Accompany ac on ac.ac_num = co.accompany.ac_num where co.accompany.ac_num = :ac_num")
-    List<Comment> findAllByAccompany_Acnum(Long ac_num);
+    List<Comment> findAllByAccompany_Acnum(@Param("ac_num") Long ac_num);
 
 
 
